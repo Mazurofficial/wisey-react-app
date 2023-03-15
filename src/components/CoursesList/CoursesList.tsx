@@ -1,13 +1,14 @@
 import { useAppSelector } from '../../app/hooks';
-import {
-   selectAllCourses,
-   selectCoursesStatus,
-} from '../../features/courses/coursesSelectors';
+import { selectCoursesStatus } from '../../features/courses/coursesSelectors';
+import { CourseType } from '../../types';
 import { CourseCard } from '../CourseCard';
 import styles from './CoursesList.module.scss';
 
-export const CoursesList = () => {
-   const courses = useAppSelector(selectAllCourses);
+interface CourseListProps {
+   courses: CourseType[];
+}
+
+export const CoursesList = ({ courses }: CourseListProps) => {
    const status = useAppSelector(selectCoursesStatus);
 
    if (status === 'loading') {

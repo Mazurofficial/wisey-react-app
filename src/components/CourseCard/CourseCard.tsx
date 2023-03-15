@@ -1,10 +1,21 @@
 import { CourseType } from '../../types';
+import { Button } from '../Button';
+import { Duration } from '../CardElements/Duration';
+import { Rating } from '../CardElements/Rating';
+import { Skills } from '../CardElements/Skills';
 import styles from './CourseCard.module.scss';
 
 interface CourseCardI
    extends Pick<
       CourseType,
-      'id' | 'title' | 'rating' | 'lessonsCount' | 'meta' | 'previewImageLink'
+      | 'id'
+      | 'title'
+      | 'rating'
+      | 'lessonsCount'
+      | 'meta'
+      | 'previewImageLink'
+      | 'duration'
+      | 'status'
    > {}
 
 export const CourseCard = ({
@@ -14,19 +25,23 @@ export const CourseCard = ({
    title,
    meta,
    previewImageLink,
+   duration,
+   status,
 }: CourseCardI) => {
    return (
       <div id={id} className={styles.card}>
-         <img src={`${previewImageLink}/cover.webp`} alt="course_img" />
-         <h1>{title}</h1>
-         <h3>{rating}</h3>
-         <p>{lessonsCount}</p>
-         <ul>
-            {meta.skills &&
-               meta.skills.map((skill, index) => {
-                  return <li key={index}>{skill}</li>;
-               })}
-         </ul>
+         <img
+            src={`${previewImageLink}/cover.webp`}
+            alt="course_previewImage"
+            className={styles.card_image}
+         />
+         <div className={styles.card_details}>
+            <h3>{title}</h3>
+            <Rating rating={rating} />
+            <Duration duration={duration} lessons={lessonsCount} />
+            <Button>Start course</Button>
+            <Skills skills={meta.skills} />
+         </div>
       </div>
    );
 };

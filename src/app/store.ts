@@ -1,3 +1,4 @@
+import { paginationReducer } from './../features/pagination/paginationSlice';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import axios from 'axios';
 import * as api from '../api/api'
@@ -7,7 +8,8 @@ import { coursesReducer } from '../features/courses/coursesSlice';
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    courses: coursesReducer
+    courses: coursesReducer,
+    pagination: paginationReducer
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

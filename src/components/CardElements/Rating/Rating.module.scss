@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+
+    .stars {
+        position: relative;
+
+        width: 110px;
+
+        img {
+            z-index: 2;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        &_background {
+            z-index: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            width: 100%;
+            background-color: #C3C3C3;
+        }
+
+        &_rating {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            background-color: #FF9700;
+        }
+    }
+
+    p {
+        position: relative;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
