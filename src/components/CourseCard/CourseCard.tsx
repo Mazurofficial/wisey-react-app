@@ -1,4 +1,4 @@
-import { CourseType } from '../../types';
+import { CourseCardType } from '../../types';
 import { Button } from '../Button';
 import { Duration } from '../CardElements/Duration';
 import { Rating } from '../CardElements/Rating';
@@ -7,7 +7,7 @@ import styles from './CourseCard.module.scss';
 
 interface CourseCardI
    extends Pick<
-      CourseType,
+      CourseCardType,
       | 'id'
       | 'title'
       | 'rating'

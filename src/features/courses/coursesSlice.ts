@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CourseType, ExtraType, Status } from '../../types';
+import { CourseCardType, ExtraType, Status } from '../../types';
 
 
 
@@ -7,7 +7,7 @@ import { CourseType, ExtraType, Status } from '../../types';
 export const loadCourses = createAsyncThunk<
 {
     data:{
-    courses: CourseType[]
+    courses: CourseCardType[]
     }
 },
 undefined, 
@@ -31,7 +31,7 @@ undefined,
 interface CoursesSlice {
     status: Status,
     error: string | null,
-    list: CourseType[]
+    list: CourseCardType[]
 }
 
 

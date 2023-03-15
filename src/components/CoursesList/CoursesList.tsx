@@ -1,11 +1,11 @@
 import { useAppSelector } from '../../app/hooks';
 import { selectCoursesStatus } from '../../features/courses/coursesSelectors';
-import { CourseType } from '../../types';
+import { CourseCardType } from '../../types';
 import { CourseCard } from '../CourseCard';
 import styles from './CoursesList.module.scss';
 
 interface CourseListProps {
-   courses: CourseType[];
+   courses: CourseCardType[];
 }
 
 export const CoursesList = ({ courses }: CourseListProps) => {

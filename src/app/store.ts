@@ -4,12 +4,14 @@ import axios from 'axios';
 import * as api from '../api/api'
 import counterReducer from '../features/counter/counterSlice';
 import { coursesReducer } from '../features/courses/coursesSlice';
+import { courseReducer } from '../features/course/courseSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     courses: coursesReducer,
-    pagination: paginationReducer
+    pagination: paginationReducer,
+    course: courseReducer
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
