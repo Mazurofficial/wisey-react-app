@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import axios from 'axios';
-import * as api from '../api'
+import * as api from '../api/api'
 import counterReducer from '../features/counter/counterSlice';
 import { coursesReducer } from '../features/courses/coursesSlice';
 
