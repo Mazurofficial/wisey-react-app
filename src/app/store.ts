@@ -1,3 +1,4 @@
+import { modalReducer } from './../features/modalWindow/modalWindow-slice';
 import { paginationReducer } from './../features/pagination/paginationSlice';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -11,7 +12,8 @@ export const store = configureStore({
     counter: counterReducer,
     courses: coursesReducer,
     pagination: paginationReducer,
-    course: courseReducer
+    course: courseReducer,
+    modal: modalReducer
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

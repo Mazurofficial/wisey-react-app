@@ -1,4 +1,4 @@
 import { RootState } from "../../app/store";
 
-export const selectAllCourses = (state: RootState) => state.courses.list
-export const selectCoursesStatus = (state:RootState) => state.courses.status
+export const selectActiveCourse = (state: RootState) => state.course.course
+export const selectCourseStatus = (state: RootState) => state.course.status

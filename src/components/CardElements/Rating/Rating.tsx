@@ -14,7 +14,7 @@ export const Rating = ({ rating }: RatingProps) => {
             <div
                className={styles.stars_rating}
                style={{
-                  width: `${rating * 20}%`,
+                  width: `${rating * 18 + (Math.ceil(rating) - 1) * 5}px`,
                }}
             ></div>
          </div>

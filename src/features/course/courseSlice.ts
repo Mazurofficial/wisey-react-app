@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CourseCardType, CourseType, ExtraType, Status } from '../../types';
+import { CourseType, ExtraType, Status } from '../../types';
 
 
 export const loadCourseById = createAsyncThunk<
 {
-    data:CourseCardType
+    data:CourseType
 },
-CourseCardType['id'], 
+CourseType['id'], 
 {
    extra: ExtraType,
    rejectValue: string
@@ -27,20 +27,20 @@ CourseCardType['id'],
 interface CourseSlice {
     status: Status,
     error: string | null,
-    course: CourseType | {}
+    course: CourseType | null
 }
 
 
 const initialState : CourseSlice = {
    status: 'idle',
    error: null,
-   course: {},
+   course: null,
 };
 
 const courseSlice = createSlice({
    name: '@@course',
    initialState,
-   reducers: {},
+   reducers: {clearDetails: () => initialState,},
    extraReducers: (builder) => {
       builder
          .addCase(loadCourseById.pending, (state) => {
@@ -60,3 +60,4 @@ const courseSlice = createSlice({
 });
 
 export const courseReducer = courseSlice.reducer;
+export const {clearDetails} = courseSlice.actions

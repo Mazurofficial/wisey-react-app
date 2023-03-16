@@ -39,7 +39,9 @@ export const CourseCard = ({
             <h3>{title}</h3>
             <Rating rating={rating} />
             <Duration duration={duration} lessons={lessonsCount} />
-            <Button>Start course</Button>
+            <Button isLink={true} link={`course/${id}`}>
+               Start course
+            </Button>
             <Skills skills={meta.skills} />
          </div>
       </div>
