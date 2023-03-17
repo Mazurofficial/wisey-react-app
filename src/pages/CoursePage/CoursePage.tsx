@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { CourseDetails } from '../../components/CourseDetails';
+import { LessonModal } from '../../components/LessonModal';
 import { Lessons } from '../../components/Lessons';
 import {
    selectActiveCourse,
@@ -11,6 +12,7 @@ import {
    clearDetails,
    loadCourseById,
 } from '../../features/course/courseSlice';
+import { Modal } from '../../features/modalWindow/Modal/Modal';
 import styles from './CoursePage.module.scss';
 
 export const CoursePage = () => {
@@ -52,6 +54,9 @@ export const CoursePage = () => {
          />
 
          <Lessons />
+         <Modal>
+            <LessonModal />
+         </Modal>
       </div>
    ) : (
       <h1>{loadingStatus.charAt(0).toUpperCase() + loadingStatus.slice(1)}</h1>

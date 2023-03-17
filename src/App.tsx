@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router';
 import './App.css';
 import { useAppDispatch } from './app/hooks';
 import { loadCourses } from './features/courses/coursesSlice';
+import { Pip } from './features/pip/Pip';
 import { CoursePage } from './pages/CoursePage';
 import { Main } from './pages/Main';
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/course/:id" element={<CoursePage />} />
          </Routes>
+         <Pip />
       </div>
    );
 }

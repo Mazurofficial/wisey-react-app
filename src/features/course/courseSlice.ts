@@ -27,7 +27,12 @@ CourseType['id'],
 interface CourseSlice {
     status: Status,
     error: string | null,
-    course: CourseType | null
+    course: CourseType | null,
+    activeLesson: {
+      link: string | undefined,
+      title: string,
+      order: number
+    }
 }
 
 
@@ -35,12 +40,24 @@ const initialState : CourseSlice = {
    status: 'idle',
    error: null,
    course: null,
+   activeLesson: {
+      order: 0,
+      link: undefined,
+      title: ''
+   }
 };
 
 const courseSlice = createSlice({
    name: '@@course',
    initialState,
-   reducers: {clearDetails: () => initialState,},
+   reducers: {
+      clearDetails: () => initialState,
+      setActiveLesson: (state, action) => {
+         state.activeLesson.link = action.payload.videoLink
+         state.activeLesson.order = action.payload.order
+         state.activeLesson.title = action.payload.title
+      }
+   },
    extraReducers: (builder) => {
       builder
          .addCase(loadCourseById.pending, (state) => {
@@ -53,11 +70,10 @@ const courseSlice = createSlice({
          })
          .addCase(loadCourseById.fulfilled, (state, action) => {
             state.status = 'received';
-            console.log(action.payload.data)
             state.course = {...action.payload.data};
          });
    },
 });
 
 export const courseReducer = courseSlice.reducer;
-export const {clearDetails} = courseSlice.actions
+export const {clearDetails, setActiveLesson} = courseSlice.actions

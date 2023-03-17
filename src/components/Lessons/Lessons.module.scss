@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    margin-top: 50px;
+
+    h2 {
+        margin-bottom: 30px;
+    }
+
+    .lessons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+    }
+}

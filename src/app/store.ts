@@ -1,3 +1,4 @@
+import { pipReducer } from './../features/pip/pipSlice';
 import { modalReducer } from './../features/modalWindow/modalWindow-slice';
 import { paginationReducer } from './../features/pagination/paginationSlice';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
@@ -13,7 +14,8 @@ export const store = configureStore({
     courses: coursesReducer,
     pagination: paginationReducer,
     course: courseReducer,
-    modal: modalReducer
+    modal: modalReducer,
+    pip: pipReducer
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({

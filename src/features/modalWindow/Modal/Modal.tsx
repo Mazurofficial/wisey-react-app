@@ -34,7 +34,10 @@ export const Modal = ({ children }: ModalProps) => {
             }
             onClick={(e) => e.stopPropagation()}
          >
-            <span onClick={() => dispatch(closeModal())}>
+            <span
+               className={styles.modal_close}
+               onClick={() => dispatch(closeModal())}
+            >
                <DefaultCloseIcon />
             </span>
             {children}

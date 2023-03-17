@@ -7,22 +7,25 @@ export const Lessons = () => {
    const course = useAppSelector(selectActiveCourse);
 
    return (
-      <div className={styles.lessons}>
-         <h3>Lessons:</h3>
-         {course &&
-            course.lessons.map((lesson, index) => {
-               return (
-                  <Lesson
-                     key={lesson.id}
-                     title={lesson.title}
-                     duration={lesson.duration}
-                     imageLink={lesson.previewImageLink}
-                     status={lesson.status}
-                     videoLink={lesson.link}
-                     order={lesson.order}
-                  />
-               );
-            })}
+      <div className={styles.container}>
+         <h2>Lessons:</h2>
+         <div className={styles.lessons}>
+            {course &&
+               course.lessons.map((lesson, index) => {
+                  return (
+                     <Lesson
+                        key={lesson.id}
+                        title={lesson.title}
+                        duration={lesson.duration}
+                        imageLink={lesson.previewImageLink}
+                        status={lesson.status}
+                        videoLink={lesson.link}
+                        order={lesson.order}
+                        type={lesson.type}
+                     />
+                  );
+               })}
+         </div>
       </div>
    );
 };

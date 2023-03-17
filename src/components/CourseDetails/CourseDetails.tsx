@@ -31,7 +31,13 @@ export const CourseDetails = ({
          </div>
          <div className={styles.course_details_secondColumn}>
             {videoLink && (
-               <VideoPlayer link={videoLink} width="100%" height="290" />
+               <VideoPlayer
+                  link={videoLink}
+                  width="100%"
+                  height="290"
+                  autoplay={true}
+                  controls={true}
+               />
             )}
          </div>
       </div>

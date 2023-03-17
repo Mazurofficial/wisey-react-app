@@ -17,6 +17,8 @@
     transition: all .3s ease-in-out;
     pointer-events: none;
 
+    z-index: 10;
+
     &_window {
         background: white;
         position: relative;
@@ -33,7 +35,7 @@
         transition: all .3s ease-in-out;
     }
 
-    span {
+    &_close {
         position: absolute;
         top: 30px;
         right: 30px;
@@ -42,7 +44,7 @@
         transition: all .3s ease-in-out;
     }
 
-    span:hover {
+    &_close:hover {
         transform: scale(1.05);
     }
 }
