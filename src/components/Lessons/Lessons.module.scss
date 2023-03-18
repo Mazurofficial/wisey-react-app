@@ -12,3 +12,21 @@
         gap: 30px;
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .container {
+        .lessons {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    .container {
+        .lessons {
+            grid-template-columns: 1fr;
+        }
+    }
+
+}

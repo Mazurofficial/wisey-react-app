@@ -1,9 +1,9 @@
 import { useAppSelector } from '../../app/hooks';
 import { selectIsModalVisible } from '../../features/modalWindow/modalWindowSelector';
 import { selectPipIsActive } from '../../features/pip/pipSelectors';
-import { Duration } from '../CardElements/Duration';
-import { Rating } from '../CardElements/Rating';
-import { Skills } from '../CardElements/Skills';
+import { Duration } from '../CourseElements/Duration';
+import { Rating } from '../CourseElements/Rating';
+import { Skills } from '../CourseElements/Skills';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
 import styles from './CourseDetails.module.scss';
 

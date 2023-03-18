@@ -18,3 +18,20 @@
         }
     }
 }
+
+@media screen and (max-width: 800px) {
+    .course {
+        &_details {
+            flex-direction: column;
+
+            &_firstColumn {
+                width: 100%;
+                margin-bottom: 50px;
+            }
+
+            &_secondColumn {
+                width: 100%;
+            }
+        }
+    }
+}

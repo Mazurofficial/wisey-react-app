@@ -7,6 +7,7 @@ import { selectIsModalVisible } from '../../features/modalWindow/modalWindowSele
 import styles from './VideoPlayer.module.scss';
 import { Preloader } from '../Preloader';
 import { ReactComponent as PipTrigger } from '../../img/pip/pip.svg';
+import { Tip } from '../Hint';
 
 interface VideoPlayerInterFace {
    link: string;
@@ -131,6 +132,10 @@ export const VideoPlayer = ({
                >
                   <PipTrigger />
                </span>
+               <Tip>
+                  To decrease speed by 0.25 press LeftShift
+                  <br /> To increase by 0.25 - RightShift
+               </Tip>
             </div>
          )}
          <video
@@ -141,6 +146,7 @@ export const VideoPlayer = ({
             muted={muted}
             onPlay={onPlay}
             onLoadedData={onLoadedData}
+            disablePictureInPicture
          ></video>
       </div>
    );

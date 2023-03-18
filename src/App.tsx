@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
 import './App.css';
 import { useAppDispatch } from './app/hooks';
+import { Header } from './components/Header';
 import { loadCourses } from './features/courses/coursesSlice';
 import { Pip } from './features/pip/Pip';
 import { CoursePage } from './pages/CoursePage';
@@ -16,6 +17,7 @@ function App() {
 
    return (
       <div className="App">
+         <Header />
          <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/course/:id" element={<CoursePage />} />

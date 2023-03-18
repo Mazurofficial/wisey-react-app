@@ -27,7 +27,9 @@ export const LessonModal = () => {
                />
             </div>
          ) : (
-            <p>Lesson is not a video type</p>
+            <div className={styles.lesson_error}>
+               <h2>Lesson is not a video type</h2>
+            </div>
          )}
          <div className={styles.lesson_info}>
             <h1>

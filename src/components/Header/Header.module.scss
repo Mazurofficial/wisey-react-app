@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #000;
+    width: 100%;
+
+    &_content {
+        width: 1000px;
+        display: flex;
+        justify-content: space-between;
+
+        &_ghlink {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #000
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .header {
+        padding: 20px 10px;
+
+        &_content {
+            width: 100%;
+        }
+    }
+}

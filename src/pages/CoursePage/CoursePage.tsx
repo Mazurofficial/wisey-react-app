@@ -31,7 +31,15 @@ export const CoursePage = () => {
    const loadingStatus = useAppSelector(selectCourseStatus);
 
    if (loadingStatus === 'loading') {
-      return <Preloader />;
+      return (
+         <div
+            style={{
+               marginTop: '50px',
+            }}
+         >
+            <Preloader />
+         </div>
+      );
    }
 
    return course ? (
