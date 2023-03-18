@@ -1,9 +1,12 @@
 import Hls from 'hls.js';
 import { useEffect, useRef, useState } from 'react';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { closeModal } from '../../features/modalWindow/modalWindow-slice';
 import { setPip } from '../../features/pip/pipSlice';
+import { selectIsModalVisible } from '../../features/modalWindow/modalWindowSelector';
 import styles from './VideoPlayer.module.scss';
+import { Preloader } from '../Preloader';
+import { ReactComponent as PipTrigger } from '../../img/pip/pip.svg';
 
 interface VideoPlayerInterFace {
    link: string;
@@ -12,7 +15,8 @@ interface VideoPlayerInterFace {
    autoplay?: boolean;
    controls?: boolean;
    muted?: boolean;
-   hasPip?: boolean;
+   useCustomControls?: boolean;
+   onPlay?: () => void;
 }
 
 export const VideoPlayer = ({
@@ -22,11 +26,14 @@ export const VideoPlayer = ({
    autoplay,
    controls,
    muted,
-   hasPip,
+   useCustomControls,
+   onPlay,
 }: VideoPlayerInterFace) => {
    const videoRef = useRef<HTMLVideoElement>(null);
    const [videoPlayback, setVideoPlayback] = useState(1);
+   const modalIsActive = useAppSelector(selectIsModalVisible);
    const dispatch = useAppDispatch();
+   const [loading, setLoading] = useState(true);
 
    useEffect(() => {
       if (videoRef.current) {
@@ -50,8 +57,17 @@ export const VideoPlayer = ({
          videoElement.addEventListener('ended', () => {
             localStorage.setItem(`videoTime${link}`, '0');
          });
+
+         videoElement.addEventListener('loadeddata', () => {
+            console.log('loaded');
+            setLoading(false);
+         });
       }
    }, [link, autoplay]);
+
+   useEffect(() => {
+      modalIsActive === false && videoRef.current?.pause();
+   }, [modalIsActive]);
 
    useEffect(() => {
       if (videoRef.current) {
@@ -71,25 +87,51 @@ export const VideoPlayer = ({
          window.addEventListener('keydown', handleKeyDown);
          const videoTime = localStorage.getItem(`videoTime${link}`);
          videoElement.currentTime = Number(videoTime);
-         console.log(videoTime);
          return () => {
             window.removeEventListener('keydown', handleKeyDown);
          };
-      }
+      } // eslint-disable-next-line
    }, []);
 
+   const onLoadedData = () => {
+      setLoading(false);
+   };
+
    return (
-      <div className={styles.container}>
-         <span>x{videoPlayback}</span>
-         {hasPip && (
-            <span
-               onClick={() => {
-                  dispatch(closeModal());
-                  dispatch(setPip(link));
+      <div
+         className={styles.container}
+         style={{
+            width: `${width}`,
+            height: `${height}px`,
+         }}
+      >
+         {loading && (
+            <div
+               className={styles.video_preloader}
+               style={{
+                  width: `${width}`,
+                  height: `${height}px`,
                }}
             >
-               open pip
-            </span>
+               <Preloader />
+            </div>
+         )}
+         {useCustomControls && (
+            <div className={styles.video_controls}>
+               <span className={styles.video_controls_speed}>
+                  x{videoPlayback}
+               </span>
+               <span
+                  className={styles.video_controls_pipTrigger}
+                  onClick={() => {
+                     dispatch(closeModal());
+                     dispatch(setPip(link));
+                     videoRef.current?.pause();
+                  }}
+               >
+                  <PipTrigger />
+               </span>
+            </div>
          )}
          <video
             ref={videoRef}
@@ -97,6 +139,8 @@ export const VideoPlayer = ({
             width={width}
             height={height}
             muted={muted}
+            onPlay={onPlay}
+            onLoadedData={onLoadedData}
          ></video>
       </div>
    );

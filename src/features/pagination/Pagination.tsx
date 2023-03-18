@@ -5,6 +5,7 @@ import { ReactComponent as LeftArrow } from '../../img/pagination/left-arrow.svg
 import { ReactComponent as RightArrow } from '../../img/pagination/right-arrow.svg';
 import { selectCoursesPerPage, selectCurrentPage } from './paginationSelectors';
 import { selectAllCourses } from '../courses/coursesSelectors';
+import { useEffect } from 'react';
 
 export const Pagination = () => {
    const dispatch = useAppDispatch();
@@ -15,12 +16,21 @@ export const Pagination = () => {
    const maxPagesCount = Math.ceil(length / coursesPerPage);
    const pagesBtns = Array.from(Array(maxPagesCount), (_, index) => index + 1);
 
+   useEffect(() => {
+      window.scrollTo({
+         top: 0,
+         behavior: 'smooth',
+      });
+   }, [currentPage]);
+
    return (
       <div className={styles.pagination}>
          {currentPage <= 1 ? null : (
             <button
                className={styles.pagination_arrowBtn}
-               onClick={() => dispatch(prevPage())}
+               onClick={() => {
+                  dispatch(prevPage());
+               }}
             >
                <LeftArrow />
             </button>
@@ -30,7 +40,9 @@ export const Pagination = () => {
                <button
                   className={styles.pagination_pageBtn}
                   key={index}
-                  onClick={() => dispatch(setPage(page))}
+                  onClick={() => {
+                     dispatch(setPage(page));
+                  }}
                >
                   {page}
                </button>
@@ -38,7 +50,6 @@ export const Pagination = () => {
                <button
                   className={styles.pagination_pageBtn}
                   key={index}
-                  onClick={() => dispatch(setPage(page))}
                   disabled
                >
                   {page}
@@ -48,7 +59,9 @@ export const Pagination = () => {
          {currentPage >= maxPagesCount ? null : (
             <button
                className={styles.pagination_arrowBtn}
-               onClick={() => dispatch(nextPage())}
+               onClick={() => {
+                  dispatch(nextPage());
+               }}
             >
                <RightArrow />
             </button>

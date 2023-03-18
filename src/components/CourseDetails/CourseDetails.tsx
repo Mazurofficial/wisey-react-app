@@ -1,3 +1,6 @@
+import { useAppSelector } from '../../app/hooks';
+import { selectIsModalVisible } from '../../features/modalWindow/modalWindowSelector';
+import { selectPipIsActive } from '../../features/pip/pipSelectors';
 import { Duration } from '../CardElements/Duration';
 import { Rating } from '../CardElements/Rating';
 import { Skills } from '../CardElements/Skills';
@@ -21,6 +24,8 @@ export const CourseDetails = ({
    skills,
    videoLink,
 }: CourseDetailsProps) => {
+   const pipIsActive = useAppSelector(selectPipIsActive);
+   const modalIsActive = useAppSelector(selectIsModalVisible);
    return (
       <div className={styles.course_details}>
          <div className={styles.course_details_firstColumn}>
@@ -35,8 +40,9 @@ export const CourseDetails = ({
                   link={videoLink}
                   width="100%"
                   height="290"
-                  autoplay={true}
+                  autoplay={pipIsActive || modalIsActive ? false : true}
                   controls={true}
+                  muted={true}
                />
             )}
          </div>

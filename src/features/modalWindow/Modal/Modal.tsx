@@ -3,7 +3,7 @@ import { useAppSelector } from '../../../app/hooks';
 import { closeModal } from '../modalWindow-slice';
 import { useAppDispatch } from '../../../app/hooks';
 import styles from './Modal.module.scss';
-import { ReactComponent as DefaultCloseIcon } from './closeImg/default.svg';
+import { ReactComponent as DefaultCloseIcon } from '../../../img/closeImg/times.svg';
 import { selectIsModalVisible } from '../modalWindowSelector';
 
 interface ModalProps {

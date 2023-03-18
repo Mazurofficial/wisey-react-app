@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { CourseDetails } from '../../components/CourseDetails';
 import { LessonModal } from '../../components/LessonModal';
 import { Lessons } from '../../components/Lessons';
+import { Preloader } from '../../components/Preloader';
 import {
    selectActiveCourse,
    selectCourseStatus,
@@ -28,6 +29,10 @@ export const CoursePage = () => {
 
    const course = useAppSelector(selectActiveCourse);
    const loadingStatus = useAppSelector(selectCourseStatus);
+
+   if (loadingStatus === 'loading') {
+      return <Preloader />;
+   }
 
    return course ? (
       <div className={styles.container}>

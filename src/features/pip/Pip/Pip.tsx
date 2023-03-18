@@ -1,21 +1,27 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { VideoPlayer } from '../../../components/VideoPlayer';
-import { selectPipLink, selectPipStatus } from '../pipSelectors';
+import { selectPipLink, selectPipIsActive } from '../pipSelectors';
 import { closePip } from '../pipSlice';
 import styles from './Pip.module.scss';
+import { ReactComponent as DefaultCloseIcon } from '../../../img/closeImg/times.svg';
 
 export const Pip = () => {
    const link = useAppSelector(selectPipLink);
-   const isActive = useAppSelector(selectPipStatus);
+   const isActive = useAppSelector(selectPipIsActive);
    const dispatch = useAppDispatch();
    return isActive ? (
       <div className={styles.pip}>
-         <span onClick={() => dispatch(closePip())}>close pip</span>
+         <span
+            className={styles.pip_close}
+            onClick={() => dispatch(closePip())}
+         >
+            <DefaultCloseIcon />
+         </span>
          <VideoPlayer
             link={link}
             height="200"
             width="100%"
-            autoplay={false}
+            autoplay={true}
             muted={false}
             controls={true}
          />
