@@ -36,21 +36,14 @@ export const Pagination = () => {
             </button>
          )}
          {pagesBtns.map((page, index) => {
-            return page !== currentPage ? (
+            return (
                <button
                   className={styles.pagination_pageBtn}
                   key={index}
                   onClick={() => {
                      dispatch(setPage(page));
                   }}
-               >
-                  {page}
-               </button>
-            ) : (
-               <button
-                  className={styles.pagination_pageBtn}
-                  key={index}
-                  disabled
+                  disabled={page !== currentPage ? false : true}
                >
                   {page}
                </button>

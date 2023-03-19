@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { CourseCardType } from '../../types';
 import { Button } from '../Button';
 import { Duration } from '../CourseElements/Duration';
+import { Poster } from '../CourseElements/Poster';
 import { Rating } from '../CourseElements/Rating';
 import { Skills } from '../CourseElements/Skills';
-import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
+import { Status } from '../CourseElements/Status';
+import { Tag } from '../CourseElements/Tag';
 import styles from './CourseCard.module.scss';
 
 interface CourseCardI
@@ -19,6 +21,7 @@ interface CourseCardI
       | 'duration'
       | 'status'
       | 'previewImageLink'
+      | 'tags'
    > {}
 
 export const CourseCard = ({
@@ -30,6 +33,7 @@ export const CourseCard = ({
    previewImageLink,
    duration,
    status,
+   tags,
 }: CourseCardI) => {
    const [hover, setHover] = useState(false);
 
@@ -40,24 +44,13 @@ export const CourseCard = ({
          onMouseEnter={() => setHover(true)}
          onMouseLeave={() => setHover(false)}
       >
-         <img
-            src={`${previewImageLink}/cover.webp`}
-            alt="course_previewImage"
-            className={styles.card_image}
+         <Tag tag={tags[0]} />
+         <Status status={status} />
+         <Poster
+            imgLink={previewImageLink}
+            videoLink={meta.courseVideoPreview?.link}
+            hover={hover}
          />
-         {hover && meta.courseVideoPreview && (
-            <div className={styles.card_video}>
-               <VideoPlayer
-                  link={meta.courseVideoPreview.link}
-                  width="100%"
-                  height="163"
-                  autoplay={true}
-                  controls={false}
-                  muted={true}
-               />
-            </div>
-         )}
-
          <div className={styles.card_details}>
             <h3>{title}</h3>
             <Rating rating={rating} />

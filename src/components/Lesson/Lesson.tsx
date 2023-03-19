@@ -39,6 +39,7 @@ export const Lesson = ({
       }
       dispatch(openModal());
    };
+
    return (
       <div className={styles.lesson}>
          <img
@@ -55,15 +56,13 @@ export const Lesson = ({
                Duration: {Math.trunc(duration / 60)}m{' '}
                {duration - Math.trunc(duration / 60) * 60}s
             </p>
-            {status === 'locked' ? (
-               <Button isLink={false} disabled={true}>
-                  Lesson is locked
-               </Button>
-            ) : (
-               <Button isLink={false} onClick={handleLesson}>
-                  Open Lesson
-               </Button>
-            )}
+            <Button
+               isLink={false}
+               disabled={status === 'locked' ? true : false}
+               onClick={handleLesson}
+            >
+               {status === 'locked' ? 'Lesson is locked' : 'Open Lesson'}
+            </Button>
          </div>
       </div>
    );
