@@ -8,26 +8,3 @@ const body = 'eyJzdWIiOiJkOTRlNjg4NS1kM2U5LTQwY2EtYTVjYy01MDRkNjZlZDVlN2QiLCJwbG
 const signature = 'Qw3LF39CDp27ZxoGzt5rikJM_OTx0eNaoyFFLxxrXUM'
 export const TOKEN = [header, body, signature].join('.')
 
-// const getToken = async () => {
-//     let token = ''
-//     const response = await fetch(API_URL + '/auth/anonymous?platform=subscriptions');
-//     response.json().then((data: TokenType) => {
-//         console.log(`data: ${ data.token}`)
-//         token = data.token
-//     })
-//     return token
-// }
-
-// const api_token = getToken()
-
-
-// export const getCourses = async () => {
-//     //console.log(api_token)
-//     const response = await fetch('https://api.wisey.app/api/v1/core/preview-courses', {
-//         headers: {
-//             'Authorization' : 'Bearer ' + token
-//         },
-//     });
-//    return await response.json();
-// }
-
