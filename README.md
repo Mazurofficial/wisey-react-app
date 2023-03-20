@@ -14,7 +14,7 @@ To realize several pages in my app there was used [react-router](https://www.npm
 
 ## VideoPlayer
 To make custom videoPlayer that supports .m3u8 video format was used [hls.js](https://www.npmjs.com/package/hls.js) library\
-speedChange feature was realized with standart <video> property playbackRate and listening of window event 'keydown'\
+speedChange feature was realized with standart html video property playbackRate and listening of window event 'keydown'\
 To make the PictureInPicture(pip) window I simply create new component [Pip](https://github.com/Mazurofficial/wisey-react-app/tree/main/src/features/pip/Pip) and add it behind Routes in [App](https://github.com/Mazurofficial/wisey-react-app/blob/main/src/App.tsx)\
 (This features you can check while watching the lesson)\
 Progress of each video is saved to localstrage separetely
