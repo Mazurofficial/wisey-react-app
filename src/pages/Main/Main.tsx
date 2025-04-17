@@ -5,12 +5,12 @@ import { useCurrentCourses } from '../../features/pagination/useCurrentCourses';
 import styles from './Main.module.scss';
 
 export const Main = () => {
-   const currentCourses = useCurrentCourses();
+  const currentCourses = useCurrentCourses();
 
-   return (
-      <div className={styles.container}>
-         <CoursesList courses={currentCourses} />
-         <Pagination />
-      </div>
-   );
+  return (
+    <div className={styles.container}>
+      <CoursesList courses={currentCourses} />
+      <Pagination />
+    </div>
+  );
 };

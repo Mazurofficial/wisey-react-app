@@ -1,1 +1,1 @@
-export * from './LessonModal'
+export * from './LessonModal';

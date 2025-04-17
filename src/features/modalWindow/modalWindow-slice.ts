@@ -1,25 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit';
 
 interface modalState {
-    isVisible: boolean,
+  isVisible: boolean;
 }
 
 const initialState: modalState = {
-    isVisible: false,  
-}
+  isVisible: false,
+};
 
 const modalSlice = createSlice({
-    name: '@@modal',
-    initialState,
-    reducers: {
-        openModal:(state) => {
-            state.isVisible = true
-        },
-        closeModal:(state) => {
-            state.isVisible = false
-        }
-    }
-})
+  name: '@@modal',
+  initialState,
+  reducers: {
+    openModal: (state) => {
+      state.isVisible = true;
+    },
+    closeModal: (state) => {
+      state.isVisible = false;
+    },
+  },
+});
 
-export const {openModal, closeModal} = modalSlice.actions
-export const modalReducer = modalSlice.reducer
+export const { openModal, closeModal } = modalSlice.actions;
+export const modalReducer = modalSlice.reducer;

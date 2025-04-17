@@ -7,41 +7,32 @@ import { ReactComponent as DefaultCloseIcon } from '../../../img/closeImg/times.
 import { selectIsModalVisible } from '../modalWindowSelector';
 
 interface ModalProps {
-   children?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const Modal = ({ children }: ModalProps) => {
-   const isVisible = useAppSelector(selectIsModalVisible);
+  const isVisible = useAppSelector(selectIsModalVisible);
 
-   const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-   useEffect(() => {
-      dispatch(closeModal());
-   }, [dispatch]);
+  useEffect(() => {
+    dispatch(closeModal());
+  }, [dispatch]);
 
-   return (
+  return (
+    <div
+      className={isVisible ? `${styles.modal} ${styles.active}` : styles.modal}
+      onClick={() => dispatch(closeModal())}
+    >
       <div
-         className={
-            isVisible ? `${styles.modal} ${styles.active}` : styles.modal
-         }
-         onClick={() => dispatch(closeModal())}
+        className={isVisible ? `${styles.modal_window} ${styles.active}` : styles.modal_window}
+        onClick={(e) => e.stopPropagation()}
       >
-         <div
-            className={
-               isVisible
-                  ? `${styles.modal_window} ${styles.active}`
-                  : styles.modal_window
-            }
-            onClick={(e) => e.stopPropagation()}
-         >
-            <span
-               className={styles.modal_close}
-               onClick={() => dispatch(closeModal())}
-            >
-               <DefaultCloseIcon />
-            </span>
-            {children}
-         </div>
+        <span className={styles.modal_close} onClick={() => dispatch(closeModal())}>
+          <DefaultCloseIcon />
+        </span>
+        {children}
       </div>
-   );
+    </div>
+  );
 };

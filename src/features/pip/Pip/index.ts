@@ -1,1 +1,1 @@
-export * from './Pip'
+export * from './Pip';

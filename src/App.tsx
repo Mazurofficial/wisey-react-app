@@ -9,22 +9,22 @@ import { CoursePage } from './pages/CoursePage';
 import { Main } from './pages/Main';
 
 function App() {
-   const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-   useEffect(() => {
-      dispatch(loadCourses());
-   }, [dispatch]);
+  useEffect(() => {
+    dispatch(loadCourses());
+  }, [dispatch]);
 
-   return (
-      <div className="App">
-         <Header />
-         <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/course/:id" element={<CoursePage />} />
-         </Routes>
-         <Pip />
-      </div>
-   );
+  return (
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/course/:id" element={<CoursePage />} />
+      </Routes>
+      <Pip />
+    </div>
+  );
 }
 
 export default App;

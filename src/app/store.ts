@@ -3,7 +3,7 @@ import { modalReducer } from './../features/modalWindow/modalWindow-slice';
 import { paginationReducer } from './../features/pagination/paginationSlice';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import axios from 'axios';
-import * as api from '../api/api'
+import * as api from '../api/api';
 import { coursesReducer } from '../features/courses/coursesSlice';
 import { courseReducer } from '../features/course/courseSlice';
 
@@ -13,18 +13,18 @@ export const store = configureStore({
     pagination: paginationReducer,
     course: courseReducer,
     modal: modalReducer,
-    pip: pipReducer
+    pip: pipReducer,
   },
   middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-     thunk: {
+    getDefaultMiddleware({
+      thunk: {
         extraArgument: {
-           client: axios,
-           api,
+          client: axios,
+          api,
         },
-     },
-     serializableCheck: false,
-  }),
+      },
+      serializableCheck: false,
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;

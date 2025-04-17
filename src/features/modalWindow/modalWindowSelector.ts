@@ -1,2 +1,2 @@
 import { RootState } from './../../app/store';
-export const selectIsModalVisible = (state: RootState) => state.modal.isVisible
+export const selectIsModalVisible = (state: RootState) => state.modal.isVisible;

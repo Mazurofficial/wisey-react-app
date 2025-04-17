@@ -1,1 +1,1 @@
-export * from './CoursePage'
+export * from './CoursePage';

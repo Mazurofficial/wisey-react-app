@@ -1,3 +1,3 @@
-export * from './status'
-export * from './courses'
-export * from './extra'
+export * from './status';
+export * from './courses';
+export * from './extra';
